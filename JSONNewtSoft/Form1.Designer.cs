@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -35,12 +36,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnToClass = new System.Windows.Forms.Button();
             this.btnCreateJson = new System.Windows.Forms.Button();
-            this.lstFriends = new System.Windows.Forms.TextBox();
             this.txtfirstName = new System.Windows.Forms.TextBox();
             this.txtlastName = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtJSON = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lstFriends = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -95,6 +97,7 @@
             this.btnToClass.Size = new System.Drawing.Size(107, 23);
             this.btnToClass.TabIndex = 5;
             this.btnToClass.Text = "DecodeJSON";
+            this.toolTip1.SetToolTip(this.btnToClass, "Deserialize ");
             this.btnToClass.UseVisualStyleBackColor = true;
             this.btnToClass.Click += new System.EventHandler(this.btnToClass_Click);
             // 
@@ -106,14 +109,7 @@
             this.btnCreateJson.TabIndex = 6;
             this.btnCreateJson.Text = "Create JSON";
             this.btnCreateJson.UseVisualStyleBackColor = true;
-            // 
-            // lstFriends
-            // 
-            this.lstFriends.Location = new System.Drawing.Point(359, 65);
-            this.lstFriends.Multiline = true;
-            this.lstFriends.Name = "lstFriends";
-            this.lstFriends.Size = new System.Drawing.Size(380, 115);
-            this.lstFriends.TabIndex = 7;
+            this.btnCreateJson.Click += new System.EventHandler(this.btnCreateJson_Click);
             // 
             // txtfirstName
             // 
@@ -151,17 +147,25 @@
             this.txtJSON.Size = new System.Drawing.Size(647, 20);
             this.txtJSON.TabIndex = 12;
             // 
+            // lstFriends
+            // 
+            this.lstFriends.FormattingEnabled = true;
+            this.lstFriends.Location = new System.Drawing.Point(340, 65);
+            this.lstFriends.Name = "lstFriends";
+            this.lstFriends.Size = new System.Drawing.Size(399, 108);
+            this.lstFriends.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 393);
+            this.Controls.Add(this.lstFriends);
             this.Controls.Add(this.txtJSON);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtlastName);
             this.Controls.Add(this.txtfirstName);
-            this.Controls.Add(this.lstFriends);
             this.Controls.Add(this.btnCreateJson);
             this.Controls.Add(this.btnToClass);
             this.Controls.Add(this.label5);
@@ -185,12 +189,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnToClass;
         private System.Windows.Forms.Button btnCreateJson;
-        private System.Windows.Forms.TextBox lstFriends;
         private System.Windows.Forms.TextBox txtfirstName;
         private System.Windows.Forms.TextBox txtlastName;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtJSON;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ListBox lstFriends;
     }
 }
 
