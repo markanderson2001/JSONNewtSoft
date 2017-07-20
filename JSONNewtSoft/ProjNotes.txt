@@ -1,0 +1,35 @@
+﻿Serialization And Deserialization of JSON -JavaScript Object Notation
+
+JSON styles,
+*Object
+	Unordered "name/value" assembly.
+	Object begins with "{" and ends with "}".
+	Behind each "name", there is a colon. And comma is used to separate much "name/value". For example,
+		var user = {"name":"Manas","gender":"Male","birthday":"1967-8-8"}   
+*Array
+	Value ordered set.
+	Array begins with "[" and end with "]". And values are separated with commas. For example,
+		var userlist = [{"user":{"name":"Manas","gender":"Male","birthday":"1967-8-8"}}, 
+						{"user":{"name":"Mohapatra","Male":"Female","birthday":"1987-7-7"}}]    
+*String
+	Any quantity Unicode character assembly which is enclosed with quotation marks. It uses backslash to escape.
+	var userlist = "{\"ID\":1,\"Name\":\"Manas\",\"Address\":\"India\"}"
+
+Application with Newtonsoft.Json 
+	PM> Install-Package Newtonsoft.Json.Schema
+
+
+Implement JSON Serialization/Deserialization ways;
+	Using NewtonSoft	  PM> Install-Package Newtonsoft.Json.Schema (tab1)
+	Using JavaScriptSerializer class
+	Using DataContractJsonSerializer class
+		Presneted in namespace System.Runtime.Serialization.Json -  available in assembly System.Runtime.Serialization.dll. 
+		Class can serialize an object into JSON data and deserialize JSON data into an object.
+		
+		Let's say there is Employee class with properties such as name, address and property values also assigned.
+		Now we can convert the Employee class instance to JSON document. 
+		This JSON document can be deserialized into the Employee class or another class with an equivalent data contract.
+		The following code snippets demonstrate about serialization and deserialization.
+ 
+	Using JSON.NET library 
+
