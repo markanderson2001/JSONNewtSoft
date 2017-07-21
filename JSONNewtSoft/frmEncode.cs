@@ -11,7 +11,7 @@ using Newtonsoft;//optionA
 using System.Runtime.Serialization;
 using System.IO;//memoryStream
 using System.Runtime.ExceptionServices;
-
+using System.Web.Script.Serialization;
  
 
 
@@ -128,60 +128,33 @@ namespace JSONNewtSoft
         private void btnSerializeJSS_Click(object sender, EventArgs e)
 
         {
+            // Creating BlogSites object  
             BlogSites bsObj = new BlogSites()
             {
-                Name = "C-sharpcorner",
+                Name = "C-sharp",
                 Description = "Share Knowledge"
             };
 
             // Serializing object to json data  
-            //  JavaScriptSerializer js = new JavaScriptSerializer();
-            //   string jsonData = js.Serialize(bsObj); // {"Name":"C-sharpcorner","Description":"Share Knowledge"}  
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            string jsonData = js.Serialize(bsObj); // {"Name":"C-sharpcorner","Description":"Share Knowledge"}  
 
         }
 
         private void btnDeSerializeJSS_Click(object sender, EventArgs e)
         {
-            // Deserializing json data to object  
-            //    JavaScriptSerializer js = new JavaScriptSerializer();
-            //    BlogSites blogObject = js.Deserialize<BlogSites>(jsonData);
-            //    string name = blogObject.Name;
-            //    string description = blogObject.Description;
+            string jsonData = "{\"Description\":\"Share Knowledge\",\"Name\":\"C-sharpcorner\"}";
 
-            //    // Other way to whithout help of BlogSites class  
-            //    dynamic blogObject = js.Deserialize<dynamic>(jsonData);
-            //    string name = blogObject["Name"];
-            //    string description = blogObject["Description"];
-            //}
-        }
+            // Deserializing json data to object
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            BlogSites blogObject = js.Deserialize<BlogSites>(jsonData);
+            string name = blogObject.Name;
+            string description = blogObject.Description;
 
-        private void btnSerializeJSONnet_Click(object sender, EventArgs e)
-        {
-            // Creating BlogSites object  
-            BlogSites bsObj = new BlogSites()
-            {
-                Name = "C-Sharp",
-                Description = "Using DataContractJsonSerializer"
-            };
-
-            // Convert BlogSites object to JOSN string format              
-            String jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(bsObj);            
-            Console.Write(jsonData);
-            MessageBox.Show(jsonData);
-        }
-
-        private void btnDeSerializeJSONnet_Click(object sender, EventArgs e)
-            
-        {
-            BlogSites bsObj = new BlogSites();
-                
-           string json = @"{'Name': 'C-Sharp',   'Description': 'Using DataContractJsonSerializer' }";
-            txtJsonNet.Text = json;
-                        //Populate object
-            Newtonsoft.Json.JsonConvert.PopulateObject(json, bsObj);
-            txtName.Text = bsObj.Name;
-            txtDescription.Text = bsObj.Description;
-            
+            //// Other way to whithout help of BlogSites class  
+            //dynamic blogObject = js.Deserialize<dynamic>(jsonData);
+            //string name = blogObject["Name"];
+            //string description = blogObject["Description"];
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -189,4 +162,35 @@ namespace JSONNewtSoft
 
         }
     }
+
+    //private void btnSerializeJSONnet_Click(object sender, EventArgs e)
+    //    {
+    //        // Creating BlogSites object  
+    //        BlogSites bsObj = new BlogSites()
+    //        {
+    //            Name = "C-Sharp",
+    //            Description = "Using DataContractJsonSerializer"
+    //        };
+
+    //        // Convert BlogSites object to JOSN string format              
+    //        String jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(bsObj);            
+    //        Console.Write(jsonData);
+    //        MessageBox.Show(jsonData);
+    //    }
+
+    //    private void BtnDeSerializeJSONnet_Click(object sender, EventArgs e)
+            
+    //    {
+    //        BlogSites bsObj = new BlogSites();
+                
+    //       string json = @"{'Name': 'C-Sharp',   'Description': 'Using DataContractJsonSerializer' }";
+    //        txtJsonNet.Text = json;
+    //                    //Populate object
+    //        Newtonsoft.Json.JsonConvert.PopulateObject(json, bsObj);
+    //        txtName.Text = bsObj.Name;
+    //        txtDescription.Text = bsObj.Description;
+            
+    //    }
+     
+ //   }
 }
