@@ -177,8 +177,7 @@ namespace JSONNewtSoft
                 
            string json = @"{'Name': 'C-Sharp',   'Description': 'Using DataContractJsonSerializer' }";
             txtJsonNet.Text = json;
-
-            //Populate object
+                        //Populate object
             Newtonsoft.Json.JsonConvert.PopulateObject(json, bsObj);
             txtName.Text = bsObj.Name;
             txtDescription.Text = bsObj.Description;

@@ -14,6 +14,7 @@ namespace JSONNewtSoft
         public List<string> Friends = new List<string>();
         public Dictionary<string, string> contact = new Dictionary<string, string>();
 
-       // "List":["One","Two"],"Dictionary"{"One":"val1""Two":"val2"}
+               // "List":["One","Two"]  array
+               //,"Dictionary"{"One":"val1""Two":"val2"} object
     }
 }
