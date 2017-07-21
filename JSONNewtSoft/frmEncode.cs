@@ -14,15 +14,6 @@ using System.Runtime.ExceptionServices;
 using System.Web.Script.Serialization;
  
 
-
-
-
-
-
-
-
-
-
 namespace JSONNewtSoft
 {
     public partial class frmEncode : Form
@@ -159,6 +150,23 @@ namespace JSONNewtSoft
 
         private void label11_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnShopping_Click(object sender, EventArgs e)
+        {
+            //Application.Run(new frmEncode());
+          //  Application.Run(new Shopping());
+
+        }
+
+        private void btnShopping_Click_1(object sender, EventArgs e)
+        {
+            // Create a new instance of the Form2 class
+            frmShop Shoppingform = new frmShop();
+
+            // Show the Shopping form
+            Shoppingform.Show();
 
         }
     }

@@ -65,6 +65,7 @@
             this.btnDeSerializeJSONnet = new System.Windows.Forms.Button();
             this.btnSerializeJSONnet = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
+            this.btnShopping = new System.Windows.Forms.Button();
             this.tabNewtonsoft.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabJavaScriptSerializer.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             // tabNewtonsoft
             // 
+            this.tabNewtonsoft.Controls.Add(this.btnShopping);
             this.tabNewtonsoft.Controls.Add(this.txtJSON);
             this.tabNewtonsoft.Controls.Add(this.btnCreateJson);
             this.tabNewtonsoft.Controls.Add(this.label6);
@@ -246,9 +248,9 @@
             this.label11.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label11.Location = new System.Drawing.Point(156, 34);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(357, 13);
+            this.label11.Size = new System.Drawing.Size(226, 13);
             this.label11.TabIndex = 11;
-            this.label11.Text = "JavaScriptSerializer was also not included in  Core ..use Newtonsoft.Jason";
+            this.label11.Text = "Add Refernece system.web.Script.Serialization";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // btnDeSerializeJSS
@@ -417,6 +419,16 @@
             this.label13.TabIndex = 12;
             this.label13.Text = "JavaScriptSerializer was also not included in  Core ..use Newtonsoft.Jason";
             // 
+            // btnShopping
+            // 
+            this.btnShopping.Location = new System.Drawing.Point(23, 221);
+            this.btnShopping.Name = "btnShopping";
+            this.btnShopping.Size = new System.Drawing.Size(182, 23);
+            this.btnShopping.TabIndex = 16;
+            this.btnShopping.Text = "Run Shopping Console";
+            this.btnShopping.UseVisualStyleBackColor = true;
+            this.btnShopping.Click += new System.EventHandler(this.btnShopping_Click_1);
+            // 
             // frmEncode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,6 +488,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnShopping;
     }
 }
 
