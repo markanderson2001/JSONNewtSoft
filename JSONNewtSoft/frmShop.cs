@@ -20,6 +20,8 @@ namespace JSONNewtSoft
         }
 
 
+        //basic constructor -iquatable since we are dealing with lists - want to be easily add and delete off list
+        //iequatable - easy to delete things
 
         class Item : IEquatable<Item>
         {
@@ -32,6 +34,8 @@ namespace JSONNewtSoft
                 this.price = price;
 
             }
+
+            //two of these class items are equal - they have the same name
             public bool Equals(Item other)
             {
                 if (other == null) return false;
@@ -45,15 +49,16 @@ namespace JSONNewtSoft
             {
                 // read file into a string and deserialize JSON to a type
                 System.Diagnostics.Debug.WriteLine("Reading data.json");
-             
-
+                
+                //read from jason and store in string
                 string jsonSTRING = File.ReadAllText("data.json");
+                //deserialize string into a list
                 List<Item> myList = JsonConvert.DeserializeObject<List<Item>>(jsonSTRING);
-
+                //check if file empty
                 if (myList == null)
                     myList = new List<Item>();
 
-                string input = "";
+                string input = "";//keayboard entries
                 int inputInt = 0;
                 string inputString = "";
 
@@ -104,7 +109,6 @@ namespace JSONNewtSoft
 
                     }
                 }
-
                 Console.WriteLine("Rewriting data.json");
                 string data = JsonConvert.SerializeObject(myList);
                 File.WriteAllText("data.json", data);
