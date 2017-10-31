@@ -15,6 +15,7 @@ JSON styles,
 *String
 	Any quantity Unicode character assembly which is enclosed with quotation marks. It uses backslash to escape.
 	var userlist = "{\"ID\":1,\"Name\":\"Manas\",\"Address\":\"India\"}"
+	
 
 Application with Newtonsoft.Json 
 	PM> Install-Package Newtonsoft.Json.Schema
