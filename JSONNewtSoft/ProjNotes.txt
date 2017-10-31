@@ -7,6 +7,7 @@ JSON styles,
 	Behind each "name", there is a colon. And comma is used to separate much "name/value". For example,
 		var user = {"name":"Manas","gender":"Male","birthday":"1967-8-8"}   
 *Array
+
 	Value ordered set.
 	Array begins with "[" and end with "]". And values are separated with commas. For example,
 		var userlist = [{"user":{"name":"Manas","gender":"Male","birthday":"1967-8-8"}}, 
