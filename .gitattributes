@@ -60,3 +60,111 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+How to: Serialize and Deserialize JSON Data
+03/30/2017 2 minutes to read Contributors  Erik Reitan  Luke Latham  Maira Wenzel  yishengjin1413
+JSON (JavaScript Object Notation) is an efficient data encoding format that enables fast exchanges of small amounts of data between client browsers and AJAX-enabled Web services.
+This topic demonstrates how to serialize .NET type objects into JSON-encoded data and then deserialize data in the JSON format back into instances of .NET types using the DataContractJsonSerializer. This example uses a data contract to demonstrate serialization and deserialization of a user-defined Person type.
+Normally, JSON serialization and deserialization is handled automatically by Windows Communication Foundation (WCF) when you use data contract types in service operations that are exposed over AJAX-enabled endpoints. However, in some cases you may need to work with JSON data directly - this is the scenario that this topic demonstrates.
+Note
+If an error occurs during serialization of an outgoing reply on the server or the reply operation throws an exception for some other reason, it may not get returned to the client as a fault.
+This topic is based on the JSON Serialization sample.
+To define the data contract for a Person
+
+Define the data contract for Person by attaching the DataContractAttribute to the class and DataMemberAttribute attribute to the members you want to serialize. For more information about data contracts, see Designing Service Contracts.
+
+Copy
+[DataContract]  
+    internal class Person  
+    {  
+        [DataMember]  
+        internal string name;  
+
+        [DataMember]  
+        internal int age;  
+    }  
+To serialize an instance of type Person to JSON
+
+Create an instance of the Person type.
+
+Copy
+Person p = new Person();  
+p.name = "John";  
+p.age = 42;  
+Serialize the Person object to a memory stream using the DataContractJsonSerializer.
+
+Copy
+MemoryStream stream1 = new MemoryStream();  
+DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Person));  
+Use the WriteObject method to write JSON data to the stream.
+
+Copy
+ser.WriteObject(stream1, p);  
+Show the JSON output.
+
+Copy
+stream1.Position = 0;  
+StreamReader sr = new StreamReader(stream1);  
+Console.Write("JSON form of Person object: ");  
+Console.WriteLine(sr.ReadToEnd());  
+To deserialize an instance of type Person from JSON
+
+Deserialize the JSON-encoded data into a new instance of Person by using the ReadObject method of the DataContractJsonSerializer.
+
+Copy
+stream1.Position = 0;  
+Person p2 = (Person)ser.ReadObject(stream1);  
+Show the results.
+
+Copy
+Console.Write("Deserialized back, got name=");  
+Console.Write(p2.name);  
+Console.Write(", age=");  
+Console.WriteLine(p2.age);  
+Example
+
+Copy
+// Create a User object and serialize it to a JSON stream.  
+public static string WriteFromObject()  
+{  
+    //Create User object.  
+    User user = new User("Bob", 42);  
+
+    //Create a stream to serialize the object to.  
+    MemoryStream ms = new MemoryStream();  
+
+    // Serializer the User object to the stream.  
+    DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(User));  
+    ser.WriteObject(ms, user);  
+    byte[] json = ms.ToArray();  
+    ms.Close();  
+    return Encoding.UTF8.GetString(json, 0, json.Length);  
+
+}  
+
+// Deserialize a JSON stream to a User object.  
+public static User ReadToObject(string json)  
+{  
+    User deserializedUser = new User();  
+    MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));  
+    DataContractJsonSerializer ser = new DataContractJsonSerializer(deserializedUser.GetType());  
+    deserializedUser = ser.ReadObject(ms) as User;  
+    ms.Close();  
+    return deserializedUser;  
+}  
+Note
+The JSON serializer throws a serialization exception for data contracts that have multiple members with the same name, as shown in the following sample code.
+
+Copy
+[DataContract]  
+public class TestDuplicateDataBase  
+{  
+    [DataMember]  
+    public int field1 = 123;  
+}  
+[DataContract]  
+public class TestDuplicateDataDerived : TestDuplicateDataBase  
+{  
+    [DataMember]  
+    public new int field1 = 999;  
+}  
